@@ -1,0 +1,45 @@
+﻿@model FJMA20241103.Models.Auto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Crear</h1>
+
+<h4>Autos</h4>
+<hr />
+
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label asp-for="Marca" class="control-label"></label>
+                        <input asp-for="Marca" class="form-control" placeholder="Ingrese la Marca"/>
+                        <span asp-validation-for="Marca" class="text-danger"></span>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label asp-for="Modelo" class="control-label"></label>
+                        <input asp-for="Modelo" class="form-control" placeholder="Ingrese el modelo"/>
+                        <span asp-validation-for="Modelo" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-3">
+                        <label asp-for="Anio" class="control-label"></label>
+                        <input asp-for="Anio" class="form-control" placeholder="Ingrese el año"/>
+                        <span asp-validation-for="Anio" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row row-cols-md-12">
+                    @await Html.PartialAsync("_ComponenteCarro", Model.ComponenteCarros)
+                </div>
+                <br/>
+                <div class="form-group">
+                    <input type="submit" value="Crear" class="btn btn-primary" /> |
+                    <a class="btn btn-secondary" asp-action="Index">Regresar</a>
+                </div>
+        </form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
